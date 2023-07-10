@@ -1,0 +1,67 @@
+Quiz
+- quiz_id (PK)
+- quiz_name
+- modul_id (FK)
+- quiz_type (multiple choice, essay, draggable)
+- quiz_date
+- quiz_time
+
+question_mc
+- question_id
+- quiz_id
+- question
+- question_image
+- question_poin
+
+option_mc
+- option_id
+- question_id
+- opsi1
+- opsi2
+- opsi3
+- opsi4
+- opsi5
+- key_answer
+
+answer_mc
+- answer_id
+- user_id
+- option_id
+- answer
+- score
+
+essay
+- essay_id
+- quiz_id
+- essay_question
+- essay_image
+- essay_poin
+
+answer_essay
+- answer_id
+- user_id
+- essay_id
+- answer
+
+draggable
+- draggable_id
+- quiz_id
+- draggable_question
+- draggable_image
+- draggable_poin
+
+draggable_option
+- draggable_opt_id
+- draggable_id
+- draggable_answer
+
+answer_draggable
+- answer_id
+- user_id
+- answer
+
+attempt_quiz
+- attempt_id
+- user_id
+- quiz_id
+
