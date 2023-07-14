@@ -6,7 +6,8 @@
             style="height: 100vh; background-color: rgba(0, 0, 0, 0.5); background-image: url('{{ asset('img/background.jpg') }}'); background-size: cover;">
 
 
-            <div class="col-xl-4" style="border: 3px solid rgba(221, 221, 221, 0.8); 
+            <div class="col-xl-4"
+                style="border: 3px solid rgba(221, 221, 221, 0.8);
             background-color: white;
             border-radius: 10px;">
                 <div class="d-flex mt-3 justify-content-start align-items-center">
@@ -33,7 +34,7 @@
                     </div>
                 @endif
 
-                <form action="{{ url('/handleLogin') }}" class="mt-4 px-2" method="POST" >
+                <form action="{{ route('handleLogin') }}" class="mt-4 px-2" method="POST">
                     @csrf
                     <div class="mt-2">
                         <label for="email">Email<span class="text-danger">*</span></label>
@@ -62,7 +63,7 @@
                 </form>
                 {{-- <a href="{{ url('/forgot-password') }}" class="forgot-pass-link">Lupa Password?</a> --}}
 
-                
+
             </div>
 
         </div>

@@ -50,7 +50,7 @@ class ModulVideoController extends Controller
 
         $access_modul_video = auth()->user();
 
-    
+
         $data = [
             'title'     => 'Modul Video',
             'id_page'   => 17,
@@ -81,22 +81,22 @@ class ModulVideoController extends Controller
     // {
     //     $modul_video = new ModulVideo();
     //     $file_modul_videos = $request->file('file_modul_video');
-    
+
     //     foreach ($file_modul_videos as $file_modul_video) {
     //         $modul_video = new ModulVideo();
     //         $modul_video_name = time() . '_' . $file_modul_video->getClientOriginalName();
-    
+
     //         $file_modul_video->storeAs('public/videos', $modul_video_name);
-    
+
     //         $modul_video->matkul_id = $request->matkul_id;
     //         $modul_video->nama_modul_video = $file_modul_video->getClientOriginalName();
     //         $modul_video->kelas_id = $request->kelas_id;
     //         $modul_video->file_modul_video = $modul_video_name;
     //         $modul_video->deskripsi = $request->deskripsi;
-    
+
     //         $modul_video->save();
     //     }
-    
+
     //     return back()->with('success', 'Berhasil menambahkan modul.');
     // }
 
@@ -108,12 +108,12 @@ class ModulVideoController extends Controller
             'file_modul' => 'nullable|mimes:mp4',
             'deskripsi' => 'required',
         ]);
-    
+
         $modul_video = new ModulVideo();
         $modul_video->modul_id = $request->modul_id;
         $modul_video->nama_video = $request->nama_video;
         $modul_video->deskripsi = $request->deskripsi;
-    
+
         if ($request->hasFile('file_modul')) {
             $file_modul = $request->file_modul;
             $file_name = time() . '_' . $file_modul->getClientOriginalName();
@@ -121,36 +121,68 @@ class ModulVideoController extends Controller
             $file_modul->storeAs('public/videos', $file_name);
             $modul_video->file_modul = $file_path;
         }
-        
-    
+
+
         $modul_video->save();
-    
+
         return back()->with('success', 'Berhasil menambahkan modul.');
     }
-    
+
 
 
     // handle update modul_video
-    
-    protected function UpdateModulVideo(Request $request, $modul_video_id)
-    {
-        $modul_video = ModulVideo::findOrFail($modul_video_id);
 
+    // protected function UpdateModulVideo(Request $request, $modul_video_id)
+    // {
+    //     $modul_video = ModulVideo::findOrFail($modul_video_id);
+
+    //     $request->validate([
+    //         'nama_video' => 'required',
+    //         'file_modul' => 'nullable|mimes:mp4',
+    //         'deskripsi' => 'required',
+    //     ]);
+
+    //     // Hapus file video lama jika ada
+    //     if ($modul_video->file_modul) {
+    //         Storage::delete($modul_video->file_modul);
+    //     }
+
+    //     $modul_video->nama_video = $request->nama_video;
+    //     $modul_video->deskripsi = $request->deskripsi;
+
+    //     if ($request->hasFile('file_modul')) {
+    //         $file_modul = $request->file_modul;
+    //         $file_name = time() . '_' . $file_modul->getClientOriginalName();
+    //         $file_path = 'public/videos/' . $file_name;
+    //         $file_modul->storeAs('public/videos', $file_name);
+    //         $modul_video->file_modul = $file_path;
+    //     }
+
+    //     $modul_video->save();
+
+    //     return back()->with('warning', 'Modul video berhasil diperbarui.');
+    // }
+
+    protected function UpdateModulVideo($id, Request $request)
+    {
         $request->validate([
+            'modul_id' => 'nullable',
             'nama_video' => 'required',
             'file_modul' => 'nullable|mimes:mp4',
             'deskripsi' => 'required',
         ]);
 
-        // Hapus file video lama jika ada
-        if ($modul_video->file_modul) {
-            Storage::delete($modul_video->file_modul);
-        }
-
+        $modul_video = ModulVideo::findOrFail($id);
+        $modul_video->modul_id = $request->modul_id;
         $modul_video->nama_video = $request->nama_video;
         $modul_video->deskripsi = $request->deskripsi;
 
         if ($request->hasFile('file_modul')) {
+            // Menghapus file video lama
+            if ($modul_video->file_modul) {
+                Storage::delete($modul_video->file_modul);
+            }
+
             $file_modul = $request->file_modul;
             $file_name = time() . '_' . $file_modul->getClientOriginalName();
             $file_path = 'public/videos/' . $file_name;
@@ -160,8 +192,10 @@ class ModulVideoController extends Controller
 
         $modul_video->save();
 
-        return back()->with('warning', 'Modul video berhasil diperbarui.');
+        return back()->with('success', 'Berhasil memperbarui modul.');
     }
+
+
 
     // handle delete modul
     // protected function hapus_modul_video($modul_video_id)
@@ -171,20 +205,20 @@ class ModulVideoController extends Controller
     //     return back()->with('warning', 'Modul Video telah dihapus.');
     // }
     protected function delete_modul_video($id)
-{
-    $modul_video = ModulVideo::find($id);
+    {
+        $modul_video = ModulVideo::find($id);
 
-    if (!$modul_video) {
-        return back()->with('error', 'Modul video tidak ditemukan.');
+        if (!$modul_video) {
+            return back()->with('error', 'Modul video tidak ditemukan.');
+        }
+
+        // Hapus file video jika ada
+        if ($modul_video->file_modul) {
+            Storage::delete($modul_video->file_modul);
+        }
+
+        $modul_video->delete();
+
+        return back()->with('success', 'Modul video berhasil dihapus.');
     }
-
-    // Hapus file video jika ada
-    if ($modul_video->file_modul) {
-        Storage::delete($modul_video->file_modul);
-    }
-
-    $modul_video->delete();
-
-    return back()->with('success', 'Modul video berhasil dihapus.');
-}
 }

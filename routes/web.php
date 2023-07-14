@@ -26,6 +26,10 @@ Route::get('/', [Login::class, 'showLogin'])->name('login');
 Route::post('/handleLogin', [Login::class, 'handleLogin'])->name('handleLogin');
 Route::post('/handleLogout', [Login::class, 'handleLogout'])->name('handleLogout');
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
 Route::middleware('auth')->group(function () {
     // dashboard routes
     Route::get('/dashboard', [Dash::class, 'showDashboard'])->name('dashboard');
@@ -56,7 +60,7 @@ Route::middleware('auth')->group(function () {
         Route::middleware('role:dosen')->group(function () {
             Route::post('/create_modul_video/{id}', [ModulVideo::class, 'create_modul_video'])->name('modul_video.store');
             Route::delete('/delete_modul_video/{modul_video_id}', [ModulVideo::class, 'delete_modul_video'])->name('delete_modul_video');
-            Route::get('/UpdateModulVideo/{modul_video_id}', [ModulVideo::class, 'UpdateModulVideo'])->name('UpdateModulVideo');
+            Route::put('/UpdateModulVideo/{modul_video_id}', [ModulVideo::class, 'UpdateModulVideo'])->name('UpdateModulVideo');
         });
 
         Route::get('/modul_video/show/{id}', [ShowVideoController::class, 'showModulVideo'])->name('modul_video.show');
@@ -98,7 +102,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/confirm/{quiz_id}', [QuizManagement::class, 'confirm'])->name('confirm');
     });
 
-    Route::middleware('role:mahasiswa,dosen')->group(function () {
+    Route::middleware('role:mahasiswa,dosen,admin')->group(function () {
         Route::get('/results/{quiz_id}/{user_id}', [QuizManagement::class, 'result_quiz']);
     });
 
@@ -182,7 +186,6 @@ Route::middleware('auth')->group(function () {
 
     // forgot and Reset Password
     Route::get('/forgot-password', function () {
-    return view('auth.forgot-password');
-})->middleware('auth')->name('password.request');
-
+        return view('auth.forgot-password');
+    })->middleware('auth')->name('password.request');
 });

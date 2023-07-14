@@ -28,7 +28,7 @@
                                     @csrf
                                     <div class="modal-body" style="overflow-y: auto">
 
-                                        <div class="col-md-12 mt-3 px-0">
+                                        <div class="col-md-12 mt-3 px-0" hidden>
                                             <label for="modul_id" class="mb-0">Modul ID:</label>
                                             <input type="text" required name="modul_id" id="modul_id"
                                                 value="{{ $modul->modul_id }}" class="form-control"
@@ -87,9 +87,10 @@
                                                 {{ $data->deskripsi }}
                                             </td>
                                             <td>
-                                              <a href="{{ Storage::url($data->file_modul) }}" class="btn">
-                                                <i class="fa fa-eye text-success" style="font-size: 12px"> lihat video</i>
-                                              </a>
+                                                <a href="{{ Storage::url($data->file_modul) }}" class="btn">
+                                                    <i class="fa fa-eye text-success" style="font-size: 12px"> lihat
+                                                        video</i>
+                                                </a>
                                                 <button class="btn" data-toggle="modal"
                                                     data-target="#delete{{ $data->id }}">
                                                     <i class="fa fa-trash text-danger"></i>
@@ -142,24 +143,24 @@
                                             <form action="{{'/learning/update_modul_video/'.$data->modul_video_id}}" method="POST" enctype="multipart/form-data">
                                               @csrf
                                               <div class="modal-body" style="overflow-y: auto">
-                                                  
-                  
+
+
                                                   <div class="col-md-12 mt-3 px-0">
                                                     <label for="nama_video" class="mb-0">Nama Video:</label>
                                                     <input type="text" required name="nama_video" id="nama_video" class="form-control" placeholder="ex. Algoritma dan Pemrograman" value="{{ $data->nama_video }}">
                                                   </div>
-                  
+
                                                   <div class="col-md-12 mt-3 px-0">
                                                     <label for="file_modul" class="mb-0">File:</label>
                                                     <input type="file" name="file_modul_video" accept=".mp4, .web" id="file_modul_vide" class="form-control" placeholder="ex. Algoritma dan Pemrograman">
                                                   </div>
-                  
+
                                                   <div class="col-md-12 mt-3 px-0">
                                                     <label for="deskripsi" class="mb-0">Deskripsi:</label>
                                                     <textarea name="deskripsi" id="deskripsi" class="form-control" rows="6" required placeholder="Deskripsikan modul Video">{{ $data->deskripsi }}</textarea>
                                                   </div>
                                               </div>
-                                    
+
                                               <div class="modal-footer bg-whitesmoke br">
                                                 <button type="submit" class="btn btn-success">Submit</button>
                                               </div>
@@ -173,16 +174,27 @@
                                             <div class="modal-dialog modal-md modal-dialog-centered">
                                                 <div class="modal-content">
                                                     <div class="modal-header bg-info">
-                                                        <h5 class="modal-title text-light">Edit Modul Video</h5>
+                                                        <h5 class="modal-title text-light">Edit Modul Video -
+                                                            {{ $modul->modul_id }}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
                                                     <form action="{{ route('UpdateModulVideo', $data->id) }}"
-                                                        method="PUT" enctype="multipart/form-data">
+                                                        method="POST" enctype="multipart/form-data">
                                                         @csrf
+                                                        @method('PUT')
                                                         <div class="modal-body" style="overflow-y: auto">
+
+                                                            <div class="col-md-12 mt-3 px-0">
+                                                                <label for="modul_id" class="mb-0">Modul ID:</label>
+                                                                <input type="text" required name="modul_id"
+                                                                    id="modul_id" value="{{ $modul->modul_id }}"
+                                                                    class="form-control"
+                                                                    placeholder="ex. Algoritma dan Pemrograman">
+                                                            </div>
+
                                                             <div class="col-md-12 mt-3 px-0">
                                                                 <label for="nama_video" class="mb-0">Nama Video:</label>
                                                                 <input type="text" required name="nama_video"
@@ -207,6 +219,7 @@
                                                             <button type="submit" class="btn btn-success">Submit</button>
                                                         </div>
                                                     </form>
+
                                                 </div>
                                             </div>
                                         </div>
