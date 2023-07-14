@@ -58,8 +58,8 @@ class MatkulController extends Controller
         $matkul = Matkul::find($matkul_id);
         $old_img = $matkul->image;
 
-        if ($request->hasFile('image') && $request->image == true) {
-            $img_req = $request->file('product_img');
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $img_req = $request->file('image');
             $image = time() . '_' . $img_req->getClientOriginalName();
             Storage::putFileAs('public/images', $img_req, $image);
             $matkul->image = $image;
@@ -78,10 +78,8 @@ class MatkulController extends Controller
         $matkul->save();
 
         return back()->with('success', 'Berhasil mengupdate mata kuliah.');
-
-
-        return back()->with('error', 'Data mata kuliah yang anda masukkan sudah digunakan.');
     }
+
 
     protected function hapus_matkul($matkul_id)
     {
