@@ -11,7 +11,7 @@
                     <a href="{{ url('/draggable/review/' . $quiz->quiz_id) }}" class="btn me-2 btn-warning text-light" style="font-size: 12px;">Review</a>
                     <a href="{{ url('/draggable/create_draggable/' . $quiz->quiz_id) }}" class="btn me-2 text-light" style="font-size: 12px; background: purple">Create Question</a>
                     <a href="{{ url('/draggable/manage_options/' . $quiz->quiz_id) }}" class="btn me-2 text-light" style="font-size: 12px; background: rgb(22, 22, 104)">Manage Options</a>
-                    <a href="{{ route('quiz') }}" class="btn btn-secondary" style="font-size: 12px">Kembali</a>
+                    <a href="{{ route('quiz') }}" class="btn btn-secondary" style="font-size: 12px">Back</a>
                 </div>
             </div>
         </div>

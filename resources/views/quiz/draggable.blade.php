@@ -17,7 +17,7 @@
                             @php
                                 date_default_timezone_set('Asia/Jakarta');
                             @endphp
-                            <a href="{{ route('confirm', $item->quiz_id) }}" class="btn btn-secondary">Detail</a>
+                            <a href="{{ route('confirm', $item->quiz_id) }}" class="btn btn-secondary">Start Quiz</a>
                         </div>
                     </div>
                 </div>

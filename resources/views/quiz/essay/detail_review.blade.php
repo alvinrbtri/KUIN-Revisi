@@ -7,7 +7,7 @@
 
             <div class="col-md">
 
-                <a href="{{ url('/essay/master/'.$quiz->quiz_id) }}" class="btn btn-dark" style="font-size: 12px">Kembali</a>
+                <a href="{{ url('/essay/master/'.$quiz->quiz_id) }}" class="btn btn-dark" style="font-size: 12px">Back</a>
 
                 <h5 class="my-3" style="font-weight: bold">{{ $title }}</h5>
                 <form action="{{ url('/essay/pratinjau/' . $quiz->quiz_id) }}" method="POST" id="save_essay">

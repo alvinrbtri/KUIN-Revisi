@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row mt-4 mx-2">
             <div class="col-md">
-                <a href="{{ url('/essay/master/'.$quiz->quiz_id) }}" class="btn btn-dark" style="font-size: 12px">Kembali</a>
+                <a href="{{ url('/essay/master/'.$quiz->quiz_id) }}" class="btn btn-dark" style="font-size: 12px">Back</a>
             </div>
         </div>
         

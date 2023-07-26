@@ -6,7 +6,7 @@
         <div class="row mt-2 mx-2">
             <div class="col-md-12 my-4">
                 <a href="{{ url('/multiple_choice/master/' . $quiz->quiz_id) }}" class="btn btn-dark"
-                    style="font-size: 12px">Kembali</a>
+                    style="font-size: 12px">Back</a>
             </div>
             <form action="{{ '/multiple_choice/update_mc/' . $question->question_id }}" method="POST"
                 enctype="multipart/form-data" class="d-flex flex-md-row flex-column justify-content-between"

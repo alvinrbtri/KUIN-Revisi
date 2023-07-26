@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row mt-4 mx-2">
             <div class="col-md">
-                <a href="{{ url('/draggable/master/'.$quiz->quiz_id) }}" class="btn btn-dark" style="font-size: 12px">Kembali</a>
+                <a href="{{ url('/draggable/master/'.$quiz->quiz_id) }}" class="btn btn-dark" style="font-size: 12px">Back</a>
             </div>
         </div>
         
@@ -47,7 +47,7 @@
             <div class="row mx-2">
                 <div class="col-md mt-4">
                     <button name="new_question" class="btn btn-primary" style="font-weight: 700; font-size: 13px">+ New Question</button>
-                    <button name="save" type="submit" class="btn btn-success px-4" style="font-weight: 700; font-size: 13px">Simpan & Keluar</button>
+                    <button name="save" type="submit" class="btn btn-success px-4" style="font-weight: 700; font-size: 13px">Save & Out</button>
                 </div>
             </div>
             

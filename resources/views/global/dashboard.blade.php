@@ -157,7 +157,7 @@
                                     <td>@if($data->kelas_id != null) {{ $data->kelas->nama_kelas }} @endif</td>
                                     <td>
                                       <a href="{{ asset('storage/documents/'.$data->file_modul) }}" target="_blank">
-                                        Lihat Modul
+                                        View Module
                                       </a>
                                     </td>
                                     <td>

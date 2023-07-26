@@ -20,7 +20,7 @@
                     <form action="/setting/handle_update_profil" class="col-12" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mt-2">
-                            <label for="image">Profil Image</label>
+                            <label for="image">Profile Image</label>
                             <input type="file" name="image" id="image" class="form-control">
                         </div>
                         <div class="mt-3">
@@ -28,55 +28,55 @@
                             <input type="text" required name="username" id="username" placeholder="Masukkan username" value="{{ auth()->user()->username }}" class="form-control">
                         </div>
                         <div class="mt-3">
-                            <label for="nama">Nama:</label>
+                            <label for="nama">Name:</label>
                             <input type="text" required name="nama" id="nama" placeholder="Masukkan nama" value="{{ auth()->user()->nama }}" class="form-control">
                         </div>
 
                         @if (auth()->user()->level == 'mahasiswa')
                             
                         <div class="mt-3">
-                            <label>Kelas:</label>
+                            <label>Class:</label>
                             <input type="text" disabled value="@if(auth()->user()->kelas_id != null) {{ auth()->user()->kelas->nama_kelas }} @else Belum ada kelas @endif" class="form-control">
                         </div>
 
                         @endif
 
                         <div class="mt-3">
-                            <label for="tempat_lahir">Tempat Lahir:</label>
+                            <label for="tempat_lahir">Place Of Birth:</label>
                             <input type="text" required name="tempat_lahir" id="tempat_lahir" placeholder="Masukkan tempat lahir" value="{{ auth()->user()->tempat_lahir }}" class="form-control">
                         </div>
                         <div class="mt-3">
-                            <label for="tanggal_lahir">Tanggal Lahir:</label>
+                            <label for="tanggal_lahir">Date Of Birth:</label>
                             <input type="date" required name="tanggal_lahir" id="tanggal_lahir" value="{{ auth()->user()->tanggal_lahir }}" class="form-control">
                         </div>
                         <div class="mt-3">
-                            <label for="no_telepon">No. Telepon:</label>
+                            <label for="no_telepon">Telephone:</label>
                             <input type="number" min="0" required name="no_telepon" id="no_telepon" placeholder="Masukkan no telepon" value="{{ auth()->user()->no_telepon }}" class="form-control">
                         </div>
                         <div class="mt-3">
-                            <label for="provinsi">Provinsi:</label>
+                            <label for="provinsi">Province:</label>
                             <input type="text" required name="provinsi" id="provinsi" placeholder="Masukkan provinsi" value="{{ auth()->user()->provinsi }}" class="form-control">
                         </div>
                         <div class="mt-3">
-                            <label for="kabupaten_kota">Kabupaten/Kota:</label>
+                            <label for="kabupaten_kota">Regency/City:</label>
                             <input type="text" required name="kabupaten_kota" id="kabupaten_kota" placeholder="Masukkan kabupaten/kota" value="{{ auth()->user()->kabupaten_kota }}" class="form-control">
                         </div>
                         <div class="mt-3">
-                            <label for="kecamatan">Kecamatan:</label>
+                            <label for="kecamatan">Subdistrict:</label>
                             <input type="text" required name="kecamatan" id="kecamatan" placeholder="Masukkan kecamatan" value="{{ auth()->user()->kecamatan }}" class="form-control">
                         </div>
                         <div class="mt-3">
-                            <label for="desa_kelurahan">Desa/Kelurahan:</label>
+                            <label for="desa_kelurahan">Village/Ward:</label>
                             <input type="text" required name="desa_kelurahan" id="desa_kelurahan" placeholder="Masukkan desa/kelurahan" value="{{ auth()->user()->desa_kelurahan }}" class="form-control">
                         </div>
                         <div class="mt-3">
-                            <label for="alamat">Alamat:</label>
+                            <label for="alamat">Address:</label>
                             <input type="text" required name="alamat" id="alamat" placeholder="Masukkan alamat" value="{{ auth()->user()->alamat }}" class="form-control">
                         </div>
 
                         <div class="mt-5">
                             <p class="text-left">
-                                <button type="submit" class="btn p-2 btn-info" style="width: 100%">Update Profil</button>
+                                <button type="submit" class="btn p-2 btn-info" style="width: 100%">Update Profile</button>
                             </p>
                         </div>
                     </form>

@@ -10,7 +10,7 @@
                 <div class="d-flex">
                     <a href="{{ url('/essay/review/' . $quiz->quiz_id) }}" class="btn btn-warning me-2" style="font-size: 12px">Review</a>
                     <a href="{{ url('/essay/create_essay/' . $quiz->quiz_id) }}" class="btn btn-info me-2" style="font-size: 12px">Create Essay</a>
-                    <a href="{{ route('quiz') }}" class="btn btn-secondary" style="font-size: 12px">Kembali</a>
+                    <a href="{{ route('quiz') }}" class="btn btn-secondary" style="font-size: 12px">Back</a>
                 </div>
             </div>
         </div>

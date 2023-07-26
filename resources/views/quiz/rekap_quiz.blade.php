@@ -106,9 +106,9 @@
                                         <tr style="white-space: nowrap">
                                             <th>#</th>
                                             <th>Quiz Name</th>
-                                            <th>Kelas</th>
-                                            <th>Matkul</th>
-                                            <th>Modul</th>
+                                            <th>Class</th>
+                                            <th>Courses</th>
+                                            <th>Module</th>
                                             <th>Type</th>
                                             <th>Date</th>
                                             <th>Time Duration</th>

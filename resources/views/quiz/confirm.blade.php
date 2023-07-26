@@ -27,7 +27,7 @@
                                     <span class="text-light rounded px-2 py-1 bg-success">Already Done</span>
                                     @else
                                         @if ($questions > 0)
-                                            <button class="btn btn-primary" id="start_quiz" name="start_quiz">Kerjakan kuis!</button>
+                                            <button class="btn btn-primary" id="start_quiz" name="start_quiz">Take a Quiz</button>
                                         
                                         @else 
 
