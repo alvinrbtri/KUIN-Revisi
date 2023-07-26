@@ -16,7 +16,7 @@ class UserController extends Controller
     protected function showDosen()
     {
         $data = [
-            'title'     => 'Mengelola Dosen',
+            'title'     => 'Management Lectures',
             'id_page'   => 2,
             'users'     => User::where('level', '=', 'dosen')->get(),
         ];
@@ -27,7 +27,7 @@ class UserController extends Controller
     protected function showMahasiswa()
     {
         $data = [
-            'title'     => 'Mengelola Mahasiswa',
+            'title'     => 'Management Students',
             'id_page'   => 3,
             'users'     => User::with(['semester', 'kelas'])->where('level', '=', 'mahasiswa')->get(),
             'semesters' => Semester::all(),

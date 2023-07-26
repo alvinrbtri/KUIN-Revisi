@@ -34,7 +34,7 @@ class ModulController extends Controller
         }
 
         $data = [
-            'title'     => 'Modul',
+            'title'     => 'Module',
             'id_page'   => 4,
             'matkul'    => Matkul::where('dosen_id', auth()->user()->user_id)->get(),
             'modul'     => $modul,

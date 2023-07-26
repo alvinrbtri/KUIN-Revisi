@@ -9,7 +9,7 @@
                     <div class="row">
                         <div class="col-md d-flex justify-content-between align-items-center">
                             <h6 style="font-weight: 600">Quiz Management</h6>
-                            <button class="btn btn-light px-4" data-toggle="modal" data-target="#create" style="border: 1px solid #ccc">Create Quiz</button>
+                            <button class="btn px-4" data-toggle="modal" data-target="#create" style="background: navy; color:#fff">Create Quiz</button>
                         </div>
                     </div>
 
@@ -18,7 +18,7 @@
                           <div class="modal-content">
                             <div class="modal-header" style="background: navy">
                               <h5 class="modal-title text-light">Create Quiz</h5>
-                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #fff">
                                 <span aria-hidden="true">&times;</span>
                               </button>
                             </div>
@@ -152,20 +152,20 @@
                                                     <i class="fa fa-trash text-danger"></i>
                                                 </button>
                                                 <button class="btn" data-toggle="modal" data-target="{{ '#edit' . $item->quiz_id }}">
-                                                    <i class="fa fa-cog text-info"></i>
+                                                    <i class="fa fa-cog" style="color: orange"></i>
                                                 </button>
                                             </td>
                                             <div class="modal fade" id="{{ 'hapus' . $item->quiz_id }}" tabindex="-1" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
-                                                        <div class="modal-header">
-                                                        <h5 class="modal-title" id="createLabelModal">Perhatian</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <div class="modal-header bg-danger">
+                                                        <h5 class="modal-title" id="createLabelModal">Perhatian!!!</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #fff">
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Yakin untuk menghapus <strong>{{ $item->quiz_name }}</strong>
+                                                            Yakin untuk menghapus <strong>{{ $item->quiz_name }}?</strong>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -183,7 +183,7 @@
                                                   <div class="modal-content">
                                                     <div class="modal-header" style="background: orange">
                                                       <h5 class="modal-title text-light">Edit Quiz</h5>
-                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #fff">
                                                         <span aria-hidden="true">&times;</span>
                                                       </button>
                                                     </div>

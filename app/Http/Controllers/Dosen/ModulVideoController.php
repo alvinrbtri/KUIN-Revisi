@@ -52,7 +52,7 @@ class ModulVideoController extends Controller
 
 
         $data = [
-            'title'     => 'Modul Video',
+            'title'     => 'Video',
             'id_page'   => 17,
             // 'modul'    => Modul::where('dosen_id', auth()->user()->user_id)->find($id),
             'modul'    => Modul::find($id),

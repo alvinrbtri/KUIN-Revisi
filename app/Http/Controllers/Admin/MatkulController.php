@@ -15,7 +15,7 @@ class MatkulController extends Controller
     protected function showMatkul()
     {
         $data = [
-            'title'     => 'Mata Kuliah',
+            'title'     => 'Course',
             'id_page'   => 5,
             'dosen'     => User::where('level', 'dosen')->select(['user_id', 'nama'])->get(),
             'semester'  => Semester::all(),

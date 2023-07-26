@@ -7,7 +7,7 @@
         <div class="col-md">
             <div class="card card-stats">
                 <div class="d-flex align-items-center">
-                    <div class="card-header__title flex">Jumlah Mahasiswa</div>
+                    <div class="card-header__title flex">Students</div>
                     <span>{{ $jumlah_mahasiswa }}</span>
                 </div>
             </div>
@@ -15,7 +15,7 @@
         <div class="col-md">
             <div class="card card-stats">
                 <div class="d-flex align-items-center">
-                    <div class="card-header__title flex">Jumlah Dosen</div>
+                    <div class="card-header__title flex">Lectures</div>
                     <span>{{ $jumlah_dosen }}</span>
                 </div>
             </div>
@@ -23,7 +23,7 @@
         <div class="col-md">
             <div class="card card-stats">
                 <div class="d-flex align-items-center">
-                    <div class="card-header__title flex">Matkul Aktif</div>
+                    <div class="card-header__title flex">Courses</div>
                     <span>{{ $jumlah_matkul }}</span>
                 </div>
             </div>
@@ -34,12 +34,14 @@
             <div class="col-md-12">
                 <div class="card card-stats">
                     <div class="d-flex align-items-center">
-                        <div class="card-header__title flex">Jumlah Modul</div>
+                        <div class="card-header__title flex">Module</div>
                         <span>{{ $jumlah_modul }}</span>
                     </div>
                 </div>
             </div>
         @endif
+
+        
     </div>
 
     <div class="row" style="row-gap: 15px">
@@ -53,21 +55,21 @@
                             <thead>
                                 <tr style="white-space: nowrap;">
                                     <th>#</th>
-                                    <th>Profil</th>
-                                    <th>Nama</th>
+                                    <th>Profile</th>
+                                    <th>Name</th>
                                     <th>Username</th>
                                     <th>Email</th>
                                     <th>Level</th>
-                                    <th>Kelas</th>
-                                    <th>Jenis Kelamin</th>
-                                    <th>Tempat Lahir</th>
-                                    <th>Tanggal Lahir</th>
-                                    <th>No. Telepon</th>
-                                    <th>Provinsi</th>
-                                    <th>Kabupaten/Kota</th>
-                                    <th>Kecamatan</th>
-                                    <th>Desa/Kelurahan</th>
-                                    <th>Alamat</th>
+                                    <th>Class</th>
+                                    <th>Gender</th>
+                                    <th>Place of birth</th>
+                                    <th>Date of birth</th>
+                                    <th>Telephone</th>
+                                    <th>Province</th>
+                                    <th>Regency/City</th>
+                                    <th>Subdistrict</th>
+                                    <th>Village</th>
+                                    <th>Addres</th>
                                     <th>Semester</th>
                                     <th>Status</th>
                                 </tr>
@@ -133,9 +135,9 @@
                         <table class="table table-striped" id="data">
                             <thead>
                               <tr>
-                                <th>Modul</th>
-                                <th>Kelas</th>
-                                <th>File Modul</th>
+                                <th>Module</th>
+                                <th>Class</th>
+                                <th>File Module</th>
                                 <th>Deskripsi</th>
                               </tr>
                             </thead>
@@ -194,7 +196,7 @@
        
                @if ($modul->isEmpty())
                 <div class="col-12">
-                   <p class="text-muted">Belum ada modul di kelas anda</p>
+                   <p class="text-muted">There is no quizzes in your class yet !</p>
                 </div>
                @endif
         @endif

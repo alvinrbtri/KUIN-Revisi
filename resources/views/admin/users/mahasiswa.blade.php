@@ -6,15 +6,16 @@
         <div class="col-md">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Data Mahasiswa</span>
-                    <button class="btn btn-info" data-toggle="modal" data-target="#create">+ Tambah Mahasiswa</button>
+                    <span>Students Data</span>
+                    <button class="btn text-light" style="background: navy" data-toggle="modal" data-target="#create" >+ Create
+                      Students</button>
                 </div>
                 <div class="modal fade" tabindex="-1" id="create" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                       <div class="modal-content">
-                        <div class="modal-header bg-info">
-                          <h5 class="modal-title text-light">Tambah Mahasiswa</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <div class="modal-header" style="background: navy">
+                          <h5 class="modal-title text-light">Create Students</h5>
+                          <button type="button" style="color: white" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
@@ -23,7 +24,7 @@
                             <div class="modal-body" style="height: 70vh; overflow-y: auto">
                                 <div class="row">
                                   <div class="col-md-6">
-                                      <label for="nama" class="mb-0">Nama:</label>
+                                      <label for="nama" class="mb-0">Name:</label>
                                       <input type="text" required placeholder="Enter nama" class="form-control" name="nama" id="nama">
                                     </div>
                                     <div class="col-md-6">
@@ -45,7 +46,7 @@
                                 </div>
 
                                 <div class="col-md-12 mt-3 px-0">
-                                    <label for="kelas_id" class="mb-0">Kelas:</label>
+                                    <label for="kelas_id" class="mb-0">Class:</label>
                                     <select name="kelas_id" id="kelas_id" class="form-control" required>
                                         <option value="">-Kelas-</option>
                                         @foreach ($kelas as $item)
@@ -56,7 +57,7 @@
   
                                 <div class="row mt-3">
                                   <div class="col-md-6">
-                                      <label for="jenis_kelamin" class="mb-0">Jenis Kelamin:</label>
+                                      <label for="jenis_kelamin" class="mb-0">Gender:</label>
                                       <p>
                                           <input type="radio" value="Laki-Laki" required name="jenis_kelamin" id="jenis_kelamin"> Laki-Laki
                                           <input type="radio" value="Perempuan" name="jenis_kelamin" id="jenis_kelamin"> Perempuan
@@ -70,7 +71,7 @@
                                 </div>
   
                                 <div class="col-md-12 mt-3 px-0">
-                                  <label for="no_telepon" class="mb-0">No. Telepon:</label>
+                                  <label for="no_telepon" class="mb-0">Telephone:</label>
                                   <input type="no_telepon" required name="no_telepon" id="no_telepon" class="form-control" placeholder="0823****8921">
                                 </div>
   
@@ -86,7 +87,7 @@
                             </div>
                   
                             <div class="modal-footer bg-whitesmoke br">
-                              <button type="submit" class="btn btn-info">Submit</button>
+                              <button type="submit" class="btn" style="background: navy; color:white">Submit</button>
                             </div>
                           </form>
                       </div>
@@ -98,15 +99,15 @@
                         <table class="table table-striped" id="data">
                             <thead>
                                 <tr style="white-space: nowrap;">
-                                  <th>Profil</th>
-                                  <th>Nama</th>
+                                  <th>Profile</th>
+                                  <th>Name</th>
                                   <th>Username</th>
                                   <th>Nim</th>
                                   <th>Email</th>
                                   <th>Level</th>
-                                  <th>Kelas</th>
-                                  <th>Jenis Kelamin</th>
-                                  <th>No. Telepon</th>
+                                  <th>Class</th>
+                                  <th>Gender</th>
+                                  <th>Telephone</th>
                                   <th>Semester</th>
                                   <th>Status</th>
                                   <th class="text-center">Action</th>
@@ -123,19 +124,19 @@
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header bg-danger">
-                                            <h5 class="modal-title text-light" id="createLabelModal">Perhatian !!!</h5>
+                                            <h5 class="modal-title text-light" id="createLabelModal">Attention !!!</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                             </div>
                                             <div class="modal-body">
-                                                Apakah Anda yakin untuk menghapus mahasiswa <strong>{{ $user->username }} ?</strong>
+                                                Are you sure to delete data students <strong>{{ $user->username }} ?</strong>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 <form action="{{ url('/users/hapus_user/'.$user->user_id) }}" method="POST">
                                                   @csrf
-                                                  <button type="submit" class="btn btn-danger">Hapus</button>
+                                                  <button type="submit" class="btn btn-danger">Delete</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -146,9 +147,9 @@
                                     <div class="modal fade" tabindex="-1" id="{{ 'edit' . $user->user_id }}" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                                       <div class="modal-dialog modal-lg modal-dialog-centered">
                                         <div class="modal-content">
-                                          <div class="modal-header bg-info">
-                                            <h5 class="modal-title text-light">Edit Mahasiswa</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <div class="modal-header" style="background: orange">
+                                            <h5 class="modal-title text-light">Students Edit</h5>
+                                            <button type="button" class="close" style="color: white" data-dismiss="modal" aria-label="Close">
                                               <span aria-hidden="true">&times;</span>
                                             </button>
                                           </div>
@@ -157,7 +158,7 @@
                                               <div class="modal-body" style="height: 70vh; overflow-y: auto">
                                                   <div class="row">
                                                     <div class="col-md-6">
-                                                        <label for="nama" class="mb-0">Nama:</label>
+                                                        <label for="nama" class="mb-0">Name:</label>
                                                         <input type="text" value="{{ $user->nama }}" required placeholder="Enter nama" class="form-control" name="nama" id="nama">
                                                       </div>
                                                       <div class="col-md-6">
@@ -182,7 +183,7 @@
                                                   </div>
 
                                                   <div class="col-md-12 mt-3 px-0">
-                                                    <label for="kelas_id" class="mb-0">Kelas:</label>
+                                                    <label for="kelas_id" class="mb-0">Class:</label>
                                                     <select name="kelas_id" id="kelas_id" class="form-control" required>
                                                         @if ($user->kelas_id != null)
                                                         <option value="{{ $user->kelas_id }}">{{$user->kelas->nama_kelas}}</option>
@@ -196,7 +197,7 @@
                 
                                                   <div class="row mt-3">
                                                     <div class="col-md-6">
-                                                        <label for="jenis_kelamin" class="mb-0">Jenis Kelamin:</label>
+                                                        <label for="jenis_kelamin" class="mb-0">Gender:</label>
                                                         <p>
                                                             <input type="radio" value="Laki-Laki" @if($user->jenis_kelamin == 'Laki-Laki') checked @endif required name="jenis_kelamin" id="jenis_kelamin"> Laki-Laki
                                                             <input type="radio" value="Perempuan" @if($user->jenis_kelamin == 'Perempuan') checked @endif name="jenis_kelamin" id="jenis_kelamin"> Perempuan
@@ -210,7 +211,7 @@
                                                   </div>
                     
                                                   <div class="col-md-12 mt-3 px-0">
-                                                    <label for="no_telepon" class="mb-0">No. Telepon:</label>
+                                                    <label for="no_telepon" class="mb-0">Telephone:</label>
                                                     <input type="no_telepon" value="{{ $user->no_telepon }}" required name="no_telepon" id="no_telepon" class="form-control" placeholder="0823****8921">
                                                   </div>
                     
@@ -227,7 +228,7 @@
                                               </div>
                                     
                                               <div class="modal-footer bg-whitesmoke br">
-                                                <button type="submit" class="btn btn-info">Update</button>
+                                                <button type="submit" class="btn" style="background: orange; color:white">Update</button>
                                               </div>
                                             </form>
                                         </div>
@@ -262,7 +263,7 @@
                                     </td>
                                     <td class="text-center">
                                       <button class="btn text-danger" data-toggle="modal" data-target="{{ '#hapus' . $user->user_id }}"><i class="fa fa-trash"></i></button>
-                                      <button class="btn text-info" data-toggle="modal" data-target="{{ '#edit' . $user->user_id }}"><i class="fa fa-cog"></i></button>
+                                      <button class="btn" style="color: orange" data-toggle="modal" data-target="{{ '#edit' . $user->user_id }}"><i class="fa fa-cog"></i></button>
                                     </td>
 
                                    </tr>

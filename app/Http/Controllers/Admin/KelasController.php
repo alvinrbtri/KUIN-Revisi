@@ -13,7 +13,7 @@ class KelasController extends Controller
     protected function showKelas()
     {
         $data = [
-            'title'     => 'Kelas',
+            'title'     => 'Class',
             'id_page'   => 6,
             'kelas'     => Kelas::all()
         ];

@@ -6,16 +6,16 @@
             <div class="col-md">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>Mata Kuliah </span>
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#create">+ Tambah Matkul</button>
+                        <span>Courses </span>
+                        <button class="btn" style="background: navy; color: white" data-toggle="modal" data-target="#create">+ Create Courses</button>
                     </div>
                     <div class="modal fade" tabindex="-1" id="create" data-backdrop="false"
                         style="background-color: rgba(0, 0, 0, 0.5);">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content" style="height:95svh; overflow-y: auto;">
-                                <div class="modal-header bg-primary">
-                                    <h5 class="modal-title text-light">Tambah Matkul</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <div class="modal-header" style="background: navy">
+                                    <h5 class="modal-title text-light">Create Courses</h5>
+                                    <button type="button" style="color: white" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -23,9 +23,9 @@
                                     @csrf
                                     <div class="modal-body" style="overflow-y: auto">
                                         <div class="col-md-12 mt-1 px-0">
-                                            <label for="dosen_id" class="mb-0">Dosen:</label>
+                                            <label for="dosen_id" class="mb-0">Lectures:</label>
                                             <select name="dosen_id" class="form-control" required id="dosen_id">
-                                                <option value="">Pilih Dosen</option>
+                                                <option value="">Select Lectures</option>
                                                 @foreach ($dosen as $item)
                                                     <option value="{{ $item->user_id }}">{{ $item->nama }}</option>
                                                 @endforeach
@@ -33,13 +33,13 @@
                                         </div>
 
                                         <div class="col-md-12 mt-3 px-0">
-                                            <label for="image" class="mb-0">Cover Matkul:</label>
+                                            <label for="image" class="mb-0">Course Cover :</label>
                                             <input type="file" required name="image" id="image"
                                                 class="form-control">
                                         </div>
 
                                         <div class="col-md-12 mt-3 px-0">
-                                            <label for="nama_matkul" class="mb-0">Nama Matkul:</label>
+                                            <label for="nama_matkul" class="mb-0">Course Title:</label>
                                             <input type="text" required name="nama_matkul"
                                                 placeholder="Masukkan nama matkul" id="nama_matkul" class="form-control">
                                         </div>
@@ -56,7 +56,7 @@
                                         </div>
 
                                         <div class="col-md-12 mt-3 px-0">
-                                            <label for="deskripsi" class="mb-0">Deskripsi:</label>
+                                            <label for="deskripsi" class="mb-0">Descripsi:</label>
                                             <textarea name="deskripsi" id="deskripsi" class="form-control" placeholder="Deskripsikan mata kuliah" required
                                                 rows="5"></textarea>
                                         </div>
@@ -72,7 +72,7 @@
                                     </div>
 
                                     <div class="modal-footer bg-whitesmoke br">
-                                        <button type="submit" class="btn btn-info">Selesai</button>
+                                        <button type="submit" class="btn" style="background: navy; color:white">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -85,11 +85,11 @@
 
                                 <thead>
                                     <tr>
-                                        <th>Matkul</th>
-                                        <th>Dosen Pengajar</th>
-                                        <th>Deskripsi</th>
+                                        <th>Courses</th>
+                                        <th>Lectures</th>
+                                        <th>Descripsi</th>
                                         <th>Status</th>
-                                        <th>Aksi</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
 
@@ -129,7 +129,7 @@
                                                 </button>
                                                 <button class="btn" data-toggle="modal"
                                                     data-target="{{ '#edit' . $data->matkul_id }}">
-                                                    <i class="fa fa-cog text-info"></i>
+                                                    <i class="fa fa-cog" style="color:orange"></i>
                                                 </button>
                                             </td>
                                         </tr>
@@ -140,7 +140,7 @@
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header bg-danger">
-                                                        <h5 class="modal-title text-light" id="createLabelModal">Perhatian
+                                                        <h5 class="modal-title text-light" id="createLabelModal">Attention Pleasee
                                                             !!! - {{ $data->matkul_id }}</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -148,7 +148,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        Apakah Anda yakin untuk menghapus mata kuliah
+                                                        Are you sure to delete courses data
                                                         <strong>{{ $data->nama_matkul }} ?</strong>
                                                     </div>
                                                     <div class="modal-footer">
@@ -158,7 +158,7 @@
                                                             action="{{ url('/learning/hapus_matkul/' . $data->matkul_id) }}"
                                                             method="POST">
                                                             @csrf
-                                                            <button type="submit" class="btn btn-danger">Hapus</button>
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
                                                         </form>
                                                     </div>
                                                 </div>
@@ -169,8 +169,8 @@
                                             data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                                             <div class="modal-dialog modal-lg modal-dialog-centered">
                                                 <div class="modal-content" style="height:95svh; overflow-y: auto;">
-                                                    <div class="modal-header bg-info">
-                                                        <h5 class="modal-title text-light">Edit Matkul</h5>
+                                                    <div class="modal-header" style="background: orange">
+                                                        <h5 class="modal-title text-light">Course Edit</h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
                                                             <span aria-hidden="true">&times;</span>
@@ -181,7 +181,7 @@
                                                         @csrf
                                                         <div class="modal-body" style="overflow-y: auto">
                                                             <div class="col-md-12 mt-1 px-0">
-                                                                <label for="dosen_id" class="mb-0">Dosen:</label>
+                                                                <label for="dosen_id" class="mb-0">Lecture:</label>
                                                                 <select name="dosen_id" class="form-control" required
                                                                     id="dosen_id">
                                                                     <option value="{{ $data->dosen_id }}">
@@ -195,14 +195,13 @@
                                                             </div>
 
                                                             <div class="col-md-12 mt-3 px-0">
-                                                                <label for="image" class="mb-0">Cover Matkul:</label>
+                                                                <label for="image" class="mb-0">Course Cover:</label>
                                                                 <input type="file" name="image" id="image"
                                                                     class="form-control">
                                                             </div>
 
                                                             <div class="col-md-12 mt-3 px-0">
-                                                                <label for="nama_matkul" class="mb-0">Nama
-                                                                    Matkul:</label>
+                                                                <label for="nama_matkul" class="mb-0"> Course Title:</label>
                                                                 <input type="text" required name="nama_matkul"
                                                                     placeholder="Masukkan nama matkul" id="nama_matkul"
                                                                     class="form-control"
@@ -224,7 +223,7 @@
                                                             </div>
 
                                                             <div class="col-md-12 mt-3 px-0">
-                                                                <label for="deskripsi" class="mb-0">Deskripsi:</label>
+                                                                <label for="deskripsi" class="mb-0">Descripsi:</label>
                                                                 <textarea name="deskripsi" id="deskripsi" class="form-control" placeholder="Deskripsikan mata kuliah" required
                                                                     rows="5">{{ $data->deskripsi }}</textarea>
                                                             </div>
@@ -243,7 +242,7 @@
                                                         </div>
 
                                                         <div class="modal-footer bg-whitesmoke br">
-                                                            <button type="submit" class="btn btn-info">Perbarui</button>
+                                                            <button type="submit" class="btn" style="background: orange; color: white">Update</button>
                                                         </div>
                                                     </form>
                                                 </div>

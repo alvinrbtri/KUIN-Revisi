@@ -18,14 +18,14 @@
           <div class="card">
               <div class="card-header d-flex justify-content-between align-items-center">
                   <span>List Modul</span>
-                  <button class="btn btn-info" data-toggle="modal" data-target="#create">+ Create Modul</button>
+                  <button class="btn" style="background: navy; color: #fff;" data-toggle="modal" data-target="#create">+ Create Modul</button>
               </div>
               <div class="modal fade" tabindex="-1" id="create" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                   <div class="modal-dialog modal-md modal-dialog-centered">
                     <div class="modal-content">
-                      <div class="modal-header bg-info">
+                      <div class="modal-header" style="background: navy">
                         <h5 class="modal-title text-light">Create Modul</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #fff;">
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
@@ -69,7 +69,7 @@
                           </div>
                 
                           <div class="modal-footer bg-whitesmoke br">
-                            <button type="submit" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn" style="background: navy; color: #fff;">Submit</button>
                           </div>
                         </form>
                     </div>
@@ -123,7 +123,7 @@
                                         <i class="fa fa-trash text-danger"></i>
                                     </button>
                                     <button class="btn" data-toggle="modal" data-target="{{ '#edit' . $data->modul_id }}">
-                                        <i class="fa fa-cog text-info"></i>
+                                        <i class="fa fa-cog" style="color: orange"></i>
                                     </button>
                                   </td>
                                 </tr>
@@ -132,9 +132,9 @@
                                   <div class="modal fade" id="{{ 'hapus' . $data->modul_id }}" tabindex="-1" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                                       <div class="modal-dialog" role="document">
                                           <div class="modal-content">
-                                              <div class="modal-header">
-                                              <h5 class="modal-title" id="createLabelModal">Perhatian</h5>
-                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                              <div class="modal-header  bg-danger">
+                                              <h5 class="modal-title" id="createLabelModal" style="color: #fff">Perhatian</h5>
+                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: #fff">
                                                   <span aria-hidden="true">&times;</span>
                                               </button>
                                               </div>
@@ -155,9 +155,9 @@
                                   <div class="modal fade" tabindex="-1" id="{{ 'edit' . $data->modul_id }}" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                                     <div class="modal-dialog modal-md modal-dialog-centered">
                                       <div class="modal-content">
-                                        <div class="modal-header bg-info">
+                                        <div class="modal-header" style="background: orange">
                                           <h5 class="modal-title text-light">Edit Modul</h5>
-                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <button type="button" style="color: #fff" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
                                         </div>
@@ -199,13 +199,13 @@
                                                 </div>
                 
                                                 <div class="col-md-12 mt-3 px-0">
-                                                  <label for="deskripsi" class="mb-0">Deskripsi:</label>
+                                                  <label for="deskripsi" class="mb-0">Descripsi:</label>
                                                   <textarea name="deskripsi" id="deskripsi" class="form-control" rows="6" required placeholder="Deskripsikan modul">{{ $data->deskripsi }}</textarea>
                                                 </div>
                                             </div>
                                   
                                             <div class="modal-footer bg-whitesmoke br">
-                                              <button type="submit" class="btn btn-success">Submit</button>
+                                              <button type="submit" class="btn" style="background: orange; color: white">Submit</button>
                                             </div>
                                           </form>
                                       </div>
@@ -241,8 +241,8 @@
                         <span class="ml-2 text-muted">{{ $item->matkul->dosen->nama }}</span>
                     </div>
                     <div class="text-center mt-2">
-                      <a href="{{ asset('storage/documents/'.$item->file_modul) }}" target="_blank" class="btn btn-primary btn-md">Download</a>
-                      <a href="{{ route('modul_video.show', $item->modul_id) }}" class="btn btn-primary btn-md">Lihat Modul Video</a>
+                      <a href="{{ asset('storage/documents/'.$item->file_modul) }}" target="_blank" class="btn btn-primary btn-md">Lihat Modul</a>
+                      <a href="{{ route('modul_video.show', $item->modul_id) }}" class="btn btn-primary btn-md">Lihat Video</a>
                   </div>
                 </div>
             </div>

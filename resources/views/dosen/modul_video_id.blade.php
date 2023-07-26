@@ -7,7 +7,7 @@
             <div class="col-md">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <a href="{{ URL::previous() }}" class="btn btn-dark" style="font-size: 12px">Kembali</a>
+                        <a href="{{ route('modul') }}" class="btn btn-dark" style="font-size: 12px">Kembali</a>
 
                         <button class="btn btn-info" data-toggle="modal" data-target="#create{{ $modul->modul_id }}">+ Create
                             Modul Video</button>

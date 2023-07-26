@@ -13,7 +13,7 @@ class SettingController extends Controller
     protected function showEditProfil()
     {
         $data = [
-            'title'     => 'Edit Profil',
+            'title'     => 'Edit Profile',
             'id_page'   => 8,
         ];
 

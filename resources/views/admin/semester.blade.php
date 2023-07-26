@@ -7,12 +7,12 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Semester</span>
-                    <button class="btn btn-info" data-toggle="modal" data-target="#create">+ Create Semester</button>
+                    <button class="btn" style="background: navy; color: white" data-toggle="modal" data-target="#create">+ Create Semester</button>
                 </div>
                 <div class="modal fade" tabindex="-1" id="create" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                     <div class="modal-dialog modal-md modal-dialog-centered">
                       <div class="modal-content">
-                        <div class="modal-header bg-info">
+                        <div class="modal-header" style="background: navy">
                           <h5 class="modal-title text-light">Create Semester</h5>
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -28,7 +28,7 @@
                             </div>
                   
                             <div class="modal-footer bg-whitesmoke br">
-                              <button type="submit" class="btn btn-info">Selesai</button>
+                              <button type="submit" class="btn" style="background: navy; color:white">Submit</button>
                             </div>
                           </form>
                       </div>
@@ -42,7 +42,7 @@
                                 <tr>
                                     <th>No.</th>
                                     <th class="text-center">Semester</th>
-                                    <th class="text-center">Aksi</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -55,7 +55,7 @@
                                                 <i class="fa fa-trash text-danger"></i>
                                             </button>
                                             <button class="btn" data-toggle="modal" data-target="{{ '#edit' . $item->semester_id }}">
-                                                <i class="fa fa-cog text-info"></i>
+                                                <i class="fa fa-cog" style="color: orange"></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -65,13 +65,13 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-danger">
-                                                <h5 class="modal-title text-light" id="createLabelModal">Perhatian !!!</h5>
+                                                <h5 class="modal-title text-light" id="createLabelModal">Attention Pleasee !!!</h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Apakah Anda yakin untuk menghapus <strong>{{ $item->semester_tipe }} ? </strong>
+                                                    Are you sure to delete class data <strong>{{ $item->semester_tipe }} ? </strong>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -88,7 +88,7 @@
                                     <div class="modal fade" tabindex="-1" id="{{ 'edit' . $item->semester_id }}" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                                         <div class="modal-dialog modal-md modal-dialog-centered">
                                           <div class="modal-content">
-                                            <div class="modal-header bg-info">
+                                            <div class="modal-header" style="background: orange">
                                               <h5 class="modal-title text-light">Edit Semester</h5>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
@@ -104,7 +104,7 @@
                                                 </div>
                                       
                                                 <div class="modal-footer bg-whitesmoke br">
-                                                  <button type="submit" class="btn btn-info">Update</button>
+                                                  <button type="submit" class="btn" style="background: orange; color:white">Update</button>
                                                 </div>
                                               </form>
                                           </div>

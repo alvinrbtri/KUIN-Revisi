@@ -15,14 +15,14 @@
                 <div class="dropdown">
                     <a href="#" data-toggle="dropdown" data-caret="false" class="dropdown-toggle navbar-toggler navbar-toggler-company border-left d-flex align-items-center ml-navbar">
                         <span class="rounded-circle">
-                            <img src="{{ asset('img/default.png') }}" width="43" height="43" style="border-radius: 100%" alt="avatar">
+                            <img src="@if(auth()->user()->image == 'default.png') {{ asset('img/default.png') }} @else {{ asset('storage/images/'.auth()->user()->image) }} @endif" width="43" height="43" style="border-radius: 100%" alt="avatar">
                         </span>
                     </a>
                     <div id="company_menu" class="dropdown-menu dropdown-menu-right navbar-company-menu">
                         <div class="dropdown-item d-flex align-items-center py-2 navbar-company-info py-3">
 
                             <span class="mr-3">
-                                <img src="{{ asset('img/default.png') }}" width="43" height="43" style="border-radius: 100%" alt="avatar">
+                                <img src="@if(auth()->user()->image == 'default.png') {{ asset('img/default.png') }} @else {{ asset('storage/images/'.auth()->user()->image) }} @endif" width="43" height="43" style="border-radius: 100%" alt="avatar">
                             </span>
                             
                             <span class="flex d-flex flex-column">

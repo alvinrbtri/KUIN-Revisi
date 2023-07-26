@@ -6,17 +6,17 @@
             <div class="col-md">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>Data Dosen</span>
-                        <button class="btn btn-info" data-toggle="modal" data-target="#create" >+ Tambah
-                            Dosen</button>
+                        <span>Lectures Data</span>
+                        <button class="btn text-light" style="background: navy" data-toggle="modal" data-target="#create" >+ Create
+                            Lectures</button>
                     </div>
                     <div class="modal fade" tabindex="-1" id="create" data-backdrop="false"
                         style="background-color: rgba(0, 0, 0, 0.5);">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content">
-                                <div class="modal-header bg-info">
-                                    <h5 class="modal-title text-light">Tambah Dosen</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <div class="modal-header" style="background:navy">
+                                    <h5 class="modal-title text-light">Create Lectures</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="color: white">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
@@ -25,7 +25,7 @@
                                     <div class="modal-body" style="height: 70vh; overflow-y: auto">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label for="nama" class="mb-0">Nama:</label>
+                                                <label for="nama" class="mb-0">Name:</label>
                                                 <input type="text" required placeholder="Enter nama" class="form-control"
                                                     name="nama" id="nama">
                                             </div>
@@ -51,7 +51,7 @@
 
                                         <div class="row mt-3">
                                             <div class="col-md-6">
-                                                <label for="jenis_kelamin" class="mb-0">Jenis Kelamin:</label>
+                                                <label for="jenis_kelamin" class="mb-0">Gender:</label>
                                                 <p>
                                                     <input type="radio" value="Laki-Laki" required name="jenis_kelamin"
                                                         id="jenis_kelamin"> Laki-Laki
@@ -68,14 +68,14 @@
                                         </div>
 
                                         <div class="col-md-12 mt-3 px-0">
-                                            <label for="no_telepon" class="mb-0">No. Telepon:</label>
+                                            <label for="no_telepon" class="mb-0">Telephone:</label>
                                             <input type="no_telepon" required name="no_telepon" id="no_telepon"
                                                 class="form-control" placeholder="0823****8921">
                                         </div>
                                     </div>
 
                                     <div class="modal-footer bg-whitesmoke br">
-                                        <button type="submit" class="btn btn-info">Selesai</button>
+                                        <button type="submit" class="btn" style="background: navy; color:white">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -87,15 +87,15 @@
                             <table class="table table-striped" id="data">
                                 <thead>
                                     <tr style="white-space: nowrap;">
-                                        <th>Profil</th>
-                                        <th>Nama</th>
+                                        <th>Profile</th>
+                                        <th>Name</th>
                                         <th>Username</th>
                                         <th>NIP</th>
                                         <th>Email</th>
                                         <th>Level</th>
-                                        <th>Jenis Kelamin</th>
+                                        <th>Gender</th>
                                         <th>Status</th>
-                                        <th class="text-center">Aksi</th>
+                                        <th class="text-center">Action</th>
                                     </tr>
                                 </thead>
 
@@ -110,24 +110,24 @@
                                                 <div class="modal-dialog" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-header bg-danger">
-                                                            <h5 class="modal-title text-light" id="createLabelModal">Perhatian !!!</h5>
+                                                            <h5 class="modal-title text-light" id="createLabelModal">Attention Pleasee !!!</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            Apakah Anda yakin untuk menghapus dosen
+                                                            Are you sure to delete lecture data
                                                             <strong>{{ $user->username }} ?</strong>
                                                         </div>
                                                         <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary"
+                                                            <button type="button" class="btn text-light"
                                                                 data-dismiss="modal">Close</button>
                                                             <form action="{{ url('/users/hapus_user/' . $user->user_id) }}"
                                                                 method="POST">
                                                                 @csrf
                                                                 <button type="submit"
-                                                                    class="btn btn-danger">Hapus</button>
+                                                                    class="btn btn-danger">Delete</button>
                                                             </form>
                                                         </div>
                                                     </div>
@@ -139,8 +139,8 @@
                                                 data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                                                 <div class="modal-dialog modal-lg modal-dialog-centered">
                                                     <div class="modal-content">
-                                                        <div class="modal-header bg-info">
-                                                            <h5 class="modal-title text-light">Edit Dosen</h5>
+                                                        <div class="modal-header" style="background: orange">
+                                                            <h5 class="modal-title text-light">Edit Lectures</h5>
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
@@ -153,7 +153,7 @@
                                                                 style="height: 70vh; overflow-y: auto">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                        <label for="nama" class="mb-0">Nama:</label>
+                                                                        <label for="nama" class="mb-0">Name:</label>
                                                                         <input type="text" value="{{ $user->nama }}"
                                                                             required placeholder="Enter nama"
                                                                             class="form-control" name="nama"
@@ -182,14 +182,13 @@
                                                                     <label for="level" class="mb-0">Level:</label>
                                                                     <select name="level" id="level"
                                                                         class="form-control">
-                                                                        <option value="dosen" selected>Dosen</option>
+                                                                        <option value="dosen" selected>Lectures</option>
                                                                     </select>
                                                                 </div>
 
                                                                 <div class="row mt-3">
                                                                     <div class="col-md-4">
-                                                                        <label for="jenis_kelamin" class="mb-0">Jenis
-                                                                            Kelamin:</label>
+                                                                        <label for="jenis_kelamin" class="mb-0">Gender:</label>
                                                                         <p>
                                                                             <input type="radio" value="Laki-Laki"
                                                                                 @if ($user->jenis_kelamin == 'Laki-Laki') checked @endif
@@ -212,8 +211,7 @@
                                                                 </div>
 
                                                                 <div class="col-md-12 mt-3 px-0">
-                                                                    <label for="no_telepon" class="mb-0">No.
-                                                                        Telepon:</label>
+                                                                    <label for="no_telepon" class="mb-0">Telephone:</label>
                                                                     <input type="no_telepon"
                                                                         value="{{ $user->no_telepon }}" required
                                                                         name="no_telepon" id="no_telepon"
@@ -224,7 +222,7 @@
 
                                                             <div class="modal-footer bg-whitesmoke br">
                                                                 <button type="submit"
-                                                                    class="btn btn-info">Perbarui</button>
+                                                                    class="btn text-light" style="background: orange">Update</button>
                                                             </div>
                                                         </form>
                                                     </div>
@@ -255,7 +253,7 @@
                                                 <button class="btn text-danger" data-toggle="modal"
                                                     data-target="{{ '#hapus' . $user->user_id }}"><i
                                                         class="fa fa-trash"></i></button>
-                                                <button class="btn text-info" data-toggle="modal"
+                                                <button class="btn" style="color: orange" data-toggle="modal"
                                                     data-target="{{ '#edit' . $user->user_id }}"><i
                                                         class="fa fa-cog"></i></button>
                                             </td>

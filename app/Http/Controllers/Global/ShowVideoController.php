@@ -20,7 +20,7 @@ class ShowVideoController extends Controller
         $modul_video = ModulVideo::where('modul_id', $modul->modul_id)->orderByDesc('created_at')->get();
 
         $data = [
-            'title' => 'Modul Video',
+            'title' => 'Video',
             'id_page' => 17,
             'modul' => $modul,
             'modul_video' => $modul_video,

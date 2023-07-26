@@ -5,7 +5,7 @@
         <div class="col-md">
             <div class="card">
                 <div class="card-header">
-                    Rekap Penilaian
+                    Score Recap
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -13,7 +13,7 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Nama</th>
+                                    <th>Name</th>
                                     <th>Quiz</th>
                                     <th>Quiz Type</th>
                                     <th>Score</th>

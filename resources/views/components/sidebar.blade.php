@@ -26,20 +26,20 @@
                     @if (auth()->user()->level == 'admin')
                         
                     <p class="sidebar px-3 mt-3 mb-1" style="font-weight: 700; font-size: 13px">
-                        Mengelola Pengguna
+                        Users Management
                     </p>
 
                     <li class="sidebar-menu-item @if($id_page == 2) active @endif">
                         <a class="sidebar-menu-button" href="{{ route('dosen') }}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-user-secret" style="font-size: 15px"></i>
-                            <span style="font-weight: 300">Dosen</span>
+                            <span style="font-weight: 300">Lecturer</span>
                         </a>
                     </li>
 
                     <li class="sidebar-menu-item @if($id_page == 3) active @endif">
                         <a class="sidebar-menu-button" href="{{ route('mahasiswa') }}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-users" style="font-size: 15px"></i>
-                            <span style="font-weight: 300">Mahasiswa</span>
+                            <span style="font-weight: 300">Student</span>
                         </a>
                     </li>
 
@@ -47,33 +47,16 @@
 
                     <p class="sidebar px-3 mt-3 mb-1" style="font-weight: 700; font-size: 13px">
                         @if (auth()->user()->level == 'admin' || auth()->user()->level == 'dosen')
-                            Rekap Kelas
+                            Academic Administration
                         @else
-                            Rekap Kelas Quiz
-                        @endif
-                    </p>
-
-                     <li class="sidebar-menu-item @if($id_page == 15) active @endif">
-                        <a class="sidebar-menu-button" href="{{ route('assesment_recap') }}">
-                            <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-rocket" style="font-size: 15px"></i>
-                            <span style="font-weight: 300">
-                                Assessment Recap
-                            </span>
-                        </a>
-                    </li>
-
-                    <p class="sidebar px-3 mt-3 mb-1" style="font-weight: 700; font-size: 13px">
-                        @if (auth()->user()->level == 'admin' || auth()->user()->level == 'dosen')
-                            Mengelola Akademik
-                        @else
-                            Kelas Saya
+                            Class
                         @endif
                     </p>
 
                     <li class="sidebar-menu-item @if($id_page == 4) active @endif">
                         <a class="sidebar-menu-button" href="{{ route('modul') }}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-book" style="font-size: 15px"></i>
-                            <span style="font-weight: 300">Modul</span>
+                            <span style="font-weight: 300">Module</span>
                         </a>
                     </li>
 
@@ -98,14 +81,14 @@
                     <li class="sidebar-menu-item @if($id_page == 5) active @endif">
                         <a class="sidebar-menu-button" href="{{ route('matkul') }}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-graduation-cap" style="font-size: 15px"></i>
-                            <span style="font-weight: 300">Mata Kuliah</span>
+                            <span style="font-weight: 300">Course</span>
                         </a>
                     </li>
                    
                     <li class="sidebar-menu-item @if($id_page == 6) active @endif">
                         <a class="sidebar-menu-button" href="{{ route('kelas') }}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-address-book" style="font-size: 15px"></i>
-                            <span style="font-weight: 300">Kelas</span>
+                            <span style="font-weight: 300">Class</span>
                         </a>
                     </li>
                    
@@ -120,14 +103,14 @@
                     @if (auth()->user()->level == 'dosen')
                     
                     <p class="sidebar px-3 mt-3 mb-1" style="font-weight: 700; font-size: 13px">
-                        Quiz Management
+                        Manajemen Kuis
                     </p>
                         
                     <li class="sidebar-menu-item @if($id_page == 10) active @endif">
                         <a class="sidebar-menu-button" href="{{ route('quiz') }}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-rocket" style="font-size: 15px"></i>
                             <span style="font-weight: 300">
-                                Manage Quiz
+                                Management Quizzes
                             </span>
                         </a>
                     </li>
@@ -135,7 +118,7 @@
                     @endif
                     @if (auth()->user()->level == 'mahasiswa')
                     <p class="sidebar px-3 mt-3 mb-1" style="font-weight: 700; font-size: 13px">
-                        Quizzes
+                        Tipe Kuis
                     </p>
       
                     <li class="sidebar-menu-item @if($id_page == 11) active @endif">
@@ -164,25 +147,24 @@
                             </span>
                         </a>
                     </li>
-
-                    <p class="sidebar px-3 mt-3 mb-1" style="font-weight: 700; font-size: 13px">
-                        Evaluation
-                    </p>
-
-                   
-      
                     @endif
 
-                    {{-- @if (auth()->user()->level == 'dosen')
-                    <li class="sidebar-menu-item @if($id_page == 16) active @endif">
-                        <a class="sidebar-menu-button" href="{{ route('class_recap') }}">
+                    <p class="sidebar px-3 mt-3 mb-1" style="font-weight: 700; font-size: 13px">
+                        @if (auth()->user()->level == 'admin' || auth()->user()->level == 'dosen')
+                            Assesment Recap Quizzes 
+                        @else
+                            My Score
+                        @endif
+                    </p>
+
+                     <li class="sidebar-menu-item @if($id_page == 15) active @endif">
+                        <a class="sidebar-menu-button" href="{{ route('assesment_recap') }}">
                             <i class="sidebar-menu-icon sidebar-menu-icon--left fa fa-rocket" style="font-size: 15px"></i>
                             <span style="font-weight: 300">
-                                Assessment Recap
+                                Recap Quizzes
                             </span>
                         </a>
                     </li>
-                    @endif --}}
 
         
                     </ul>

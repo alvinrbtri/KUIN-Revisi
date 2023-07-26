@@ -6,15 +6,15 @@
         <div class="col-md">
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <span>Kelas</span>
-                    <button class="btn btn-info"  data-toggle="modal" data-target="#create">+ Tambah Kelas</button>
+                    <span>Class</span>
+                    <button class="btn" style="background: navy; color:white" data-toggle="modal" data-target="#create">+ Create Class</button>
                 </div>
                 <div class="modal fade" tabindex="-1" id="create" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                     <div class="modal-dialog modal-md modal-dialog-centered">
                       <div class="modal-content">
-                        <div class="modal-header bg-info">
-                          <h5 class="modal-title text-light">Tambah Kelas</h5>
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <div class="modal-header" style="background: navy">
+                          <h5 class="modal-title text-light">Create Class</h5>
+                          <button type="button" style="color: white" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
@@ -22,13 +22,13 @@
                             @csrf
                             <div class="modal-body" style="overflow-y: auto">
                                 <div class="col-md-12 mt-1 px-0">
-                                  <label for="nama_kelas" class="mb-0">Kelas:</label>
+                                  <label for="nama_kelas" class="mb-0">Class:</label>
                                   <input type="text" required name="nama_kelas" id="nama_kelas" class="form-control" placeholder="ex. Kelas A">
                                 </div>
                             </div>
                   
                             <div class="modal-footer bg-whitesmoke br">
-                              <button type="submit" class="btn btn-info">Selesai</button>
+                              <button type="submit" class="btn" style="background: navy; color:white">Submit</button>
                             </div>
                           </form>
                       </div>
@@ -41,7 +41,7 @@
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th class="text-center">Kelas</th>
+                                    <th class="text-center">Class</th>
                                     <th class="text-center">Action</th>
                                 </tr>
                             </thead>
@@ -55,7 +55,7 @@
                                                 <i class="fa fa-trash text-danger"></i>
                                             </button>
                                             <button class="btn" data-toggle="modal" data-target="{{ '#edit' . $item->kelas_id }}">
-                                                <i class="fa fa-cog text-info"></i>
+                                                <i class="fa fa-cog" style="color: orange"></i>
                                             </button>
                                         </td>
                                     </tr>
@@ -65,19 +65,19 @@
                                         <div class="modal-dialog" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header bg-danger">
-                                                <h5 class="modal-title text-light" id="createLabelModal">Perhatian !!! </h5>
+                                                <h5 class="modal-title text-light" id="createLabelModal">Attention Pleasee !!! </h5>
                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                   Apakah Anda yakin untuk menghapus kelas <strong>{{ $item->nama_kelas }} ?</strong>
+                                                   Are you sure to delete class data <strong>{{ $item->nama_kelas }} ?</strong>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     <form action="{{ url('/learning/hapus_kelas/'.$item->kelas_id) }}" method="POST">
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                                    <button type="submit" class="btn btn-danger">Delete</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -88,8 +88,8 @@
                                     <div class="modal fade" tabindex="-1" id="{{ 'edit' . $item->kelas_id }}" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                                         <div class="modal-dialog modal-md modal-dialog-centered">
                                           <div class="modal-content">
-                                            <div class="modal-header bg-info">
-                                              <h5 class="modal-title text-light">Edit Kelas</h5>
+                                            <div class="modal-header" style="background: orange">
+                                              <h5 class="modal-title text-light">Class Edit</h5>
                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                               </button>
@@ -98,13 +98,13 @@
                                                 @csrf
                                                 <div class="modal-body" style="overflow-y: auto">
                                                     <div class="col-md-12 mt-1 px-0">
-                                                      <label for="nama_kelas" class="mb-0">Kelas:</label>
+                                                      <label for="nama_kelas" class="mb-0">Class:</label>
                                                       <input type="text" value="{{ $item->nama_kelas }}" required name="nama_kelas" id="nama_kelas" class="form-control" placeholder="ex. Kelas A">
                                                     </div>
                                                 </div>
                                       
                                                 <div class="modal-footer bg-whitesmoke br">
-                                                  <button type="submit" class="btn btn-info">Perbarui</button>
+                                                  <button type="submit" class="btn" style="background: orange; color:white">Update</button>
                                                 </div>
                                               </form>
                                           </div>
