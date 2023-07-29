@@ -2,23 +2,19 @@
 
 namespace App\Models;
 
-use App\Models\Essay;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class AnswerEssay extends Model
+class AttemptQuiz extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $table = 'answer_essay';
-    protected $primaryKey = 'answer_id';
+    protected $table = 'attempt_quiz';
+    protected $primaryKey = 'attempt_id';
     protected $fillable = [
         'user_id',
-        'quiz_id',
-        'essay_id',
-        'answer',
-        'score'
+        'quiz_id'
     ];
 
     public function user(): BelongsTo
@@ -29,10 +25,5 @@ class AnswerEssay extends Model
     public function quiz(): BelongsTo
     {
         return $this->belongsTo(Quiz::class, 'quiz_id');
-    }
-
-    public function essay(): BelongsTo
-    {
-        return $this->belongsTo(Essay::class, 'essay_id');
     }
 }

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\Dosen;
 
-use App\Http\Controllers\Controller;
-use App\Models\Kelas;
-use App\Models\Matkul;
-use App\Models\Modul;
 use App\Models\User;
+use App\Models\Kelas;
+use App\Models\Modul;
+use App\Models\Matkul;
+use App\Models\ModulVideo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class ModulController extends Controller
@@ -47,34 +48,39 @@ class ModulController extends Controller
     protected function detail_modul($modul_id)
     {
         $modul = Modul::find($modul_id);
+        $modul_video = ModulVideo::get();
         $data = [
             'title'     => $modul->nama_modul,
             'id_page'   => 9,
-            'modul'     => $modul
+            'modul'     => $modul,
+            'modul_video'     => $modul_video,
         ];
 
         return view('global.detail_modul', $data);
     }
 
     // handle create data modul/materi
-    protected function create_modul(Request $request)
+       protected function create_modul(Request $request)
     {
         $modul = new Modul();
-        $file_modul = $request->file('file_modul');
-        $modul_name = time() . '_' . $file_modul->getClientOriginalName();
-
-        Storage::putFileAs('public/documents', $file_modul, $modul_name);
-
         $modul->matkul_id = $request->matkul_id;
         $modul->nama_modul = $request->nama_modul;
         $modul->kelas_id = $request->kelas_id;
-        $modul->file_modul = $modul_name;
         $modul->deskripsi = $request->deskripsi;
-
+    
+        if ($request->hasFile('file_modul')) {
+            $file_modul = $request->file_modul;
+            $file_name = time() . '_' . $file_modul->getClientOriginalName();
+            $file_path = 'public/images/' . $file_name;
+            $file_modul->storeAs('public/images', $file_name);
+            $modul->file_modul = $file_path;
+        }
+    
         $modul->save();
-
+    
         return back()->with('success', 'Berhasil menambahkan modul.');
     }
+
 
     // handle update modul
     protected function update_modul(Request $request, $modul_id)
@@ -86,13 +92,21 @@ class ModulController extends Controller
         if ($request->hasFile('file_modul') && $request->file_modul == true) {
             $file_req = $request->file('file_modul');
             $file_modul = time() . '_' . $file_req->getClientOriginalName();
-            Storage::putFileAs('public/documents', $file_req, $file_modul);
+            Storage::putFileAs('public/images', $file_req, $file_modul);
             $modul->file_modul = $file_modul;
 
             if ($old_file != $file_modul) {
-                Storage::delete('public/documents/' . $old_file);
+                Storage::delete('public/images/' . $old_file);
             }
         }
+        
+        //   if ($request->hasFile('file_modul')) {
+        //     $file_modul = $request->file_modul;
+        //     $file_name = time() . '_' . $file_modul->getClientOriginalName();
+        //     $file_path = 'public/documents/' . $file_name;
+        //     $file_modul->storeAs('public/documents', $file_name);
+        //     $modul->file_modul = $file_path;
+        // }
 
         $modul->matkul_id = $request->matkul_id;
         $modul->kelas_id = $request->kelas_id;

@@ -2,10 +2,9 @@
 
 namespace App\Models;
 
-use App\Models\Essay;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class AnswerEssay extends Model
 {
@@ -29,10 +28,5 @@ class AnswerEssay extends Model
     public function quiz(): BelongsTo
     {
         return $this->belongsTo(Quiz::class, 'quiz_id');
-    }
-
-    public function essay(): BelongsTo
-    {
-        return $this->belongsTo(Essay::class, 'essay_id');
     }
 }

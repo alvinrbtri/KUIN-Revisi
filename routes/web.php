@@ -20,6 +20,24 @@ use App\Http\Controllers\Quiz\MultipleChoiceController as MultipleChoice;
 use App\Http\Controllers\Quiz\QuizManagementController as QuizManagement;
 use App\Http\Controllers\Global\ChangePasswordController as ChangePassword;
 use App\Http\Controllers\Mahasiswa\AssesmentRecapController as AssesmentRecap;
+use Illuminate\Support\Facades\Artisan;
+
+
+
+Route::get('/storage_link', function (){ 
+    Artisan::call('storage:link'); 
+});
+
+// Route::get('/storage', function(){
+//     \Artisan::call('storage:link');
+//     return "Se han vinculado las imágenes";
+// });
+
+Route::get('/storage-link', function(){
+	$targetFolder = storage_path('app/public');
+	$linkFolder = $_SERVER['DOCUMENT_ROOT'] . '/storage';
+	symlink($targetFolder,$linkFolder);
+});
 
 // auth routes
 Route::get('/', [Login::class, 'showLogin'])->name('login');
