@@ -59,7 +59,10 @@ Route::middleware('auth')->group(function () {
         Route::post('/create_user', [User::class, 'create_user']);
         Route::post('/hapus_user/{user_id}', [User::class, 'hapus_user']);
         Route::post('/update_user/{user_id}', [User::class, 'update_user']);
+        Route::get('/template', [User::class, 'createTemplate'])->name('template');
+        Route::post('/import', [User::class, 'import'])->name('import');
     });
+
 
     // learning routes
     Route::prefix('/learning')->group(function () {
@@ -190,6 +193,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/assesment_recap', [AssesmentRecap::class, 'showAssesmentRecap'])->name('assesment_recap');
     Route::get('/class_recap', [ClassRecap::class, 'showClassRecap'])->name('class_recap');
+    //Route::get('/assesment-recap/export', [AssesmentRecap::class, 'exportToCsv']);
+    Route::match(['get', 'post'], '/assesment-recap/export', [AssesmentRecap::class, 'exportToCsv']);
+
 
     // edit profil
     Route::prefix('/setting')->group(function () {

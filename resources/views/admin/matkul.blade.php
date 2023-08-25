@@ -7,9 +7,9 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>Courses </span>
-                        <button class="btn" style="background: navy; color: white" data-toggle="modal" data-target="#create">+ Create Courses</button>
+                        {{-- <button class="btn" style="background: navy; color: white" data-toggle="modal" data-target="#create">+ Create Courses</button> --}}
                     </div>
-                    <div class="modal fade" tabindex="-1" id="create" data-backdrop="false"
+                    {{-- <div class="modal fade" tabindex="-1" id="create" data-backdrop="false"
                         style="background-color: rgba(0, 0, 0, 0.5);">
                         <div class="modal-dialog modal-lg modal-dialog-centered">
                             <div class="modal-content" style="height:95svh; overflow-y: auto;">
@@ -77,7 +77,7 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                     <div class="card-body">
                         <div class="table-responsive">

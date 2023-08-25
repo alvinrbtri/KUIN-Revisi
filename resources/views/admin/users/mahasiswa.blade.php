@@ -7,9 +7,20 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <span>Students Data</span>
-                    <button class="btn text-light" style="background: navy" data-toggle="modal" data-target="#create" >+ Create
-                      Students</button>
+                    <span>Students Data</span>
+                    <div class="dropdown">
+                      <button class="btn text-light dropdown-toggle" style="background: navy" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          + Create Students
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <button  class="dropdown-item" data-toggle="modal" data-target="#create" >Tambah Data</button>
+                          <button class="dropdown-item" data-toggle="modal" data-target="#importDataModal">Import Data Excel</button>
+                          <a class="dropdown-item" href="{{ route('template') }}">Download Template</a>
+                      </div>
+                  </div>
+                    
                 </div>
+
                 <div class="modal fade" tabindex="-1" id="create" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
                     <div class="modal-dialog modal-lg modal-dialog-centered">
                       <div class="modal-content">
@@ -92,7 +103,31 @@
                           </form>
                       </div>
                     </div>
-                </div>                
+                </div>
+                
+                <!-- Import Data Modal -->
+                  <div class="modal fade" tabindex="-1" id="importDataModal" data-backdrop="false" style="background-color: rgba(0, 0, 0, 0.5);">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="importDataModalLabel">Import Data</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="file">Upload Excel File</label>
+                                        <input type="file" class="form-control-file" id="file" name="file">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">Import</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="card-body">
                     <div class="table-responsive">

@@ -4,11 +4,16 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Semester;
 use App\Models\User;
+use App\Imports\UsersImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Kelas;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
 
 class UserController extends Controller
 {
@@ -122,4 +127,34 @@ class UserController extends Controller
 
         return back()->with('info', 'User berhasil diupdate');
     }
+
+    public function createTemplate()
+    {
+        $filePath = public_path('templates/template.xlsx');
+        return response()->download($filePath);
+    }
+
+
+    public function import(Request $request) 
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls,csv'
+        ]);
+
+        try {
+            $file = $request->file('file');
+            Excel::import(new UsersImport, $file);
+
+            return back()->with('success', 'Data has been imported successfully');
+        } catch (\Illuminate\Database\QueryException $e) {
+            // Jika Anda ingin menampilkan pesan error yang lebih spesifik, gunakan pesan dari eksepsi itu sendiri
+            $errorMessage = $e->getMessage();
+
+            // Anda bisa melakukan pemrosesan lebih lanjut di sini jika Anda ingin membersihkan atau memformat pesan itu
+
+            return back()->with('error', "Terjadi kesalahan saat mengimpor data: $errorMessage");
+        }
+    }
+
+
 }

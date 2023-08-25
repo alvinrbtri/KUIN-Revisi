@@ -15,6 +15,7 @@
                 <div class="col-md-8">
                    <div class="card">
                       <textarea name="draggable_question" class="form-control @error('draggable_question') is-invalid @enderror" id="draggable_question" rows="7" placeholder="What's your draggable question?" style="resize: none;">{{ old('draggable_question') }}</textarea>
+                      
                     </div>
                     @error('draggable_question')
                         <span class="text-danger" style="font-size: 13px">
@@ -52,7 +53,19 @@
             </div>
             
         </form>
-
-
     </div>
+    @push('script')
+        <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+        <script>
+            var options = {
+                filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+                filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+                filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+                filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+            };
+        </script>
+        <script>
+            CKEDITOR.replace('draggable_question', options);
+        </script>
+    @endpush
 @endsection

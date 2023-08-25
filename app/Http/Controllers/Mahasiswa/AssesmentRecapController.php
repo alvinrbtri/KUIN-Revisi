@@ -8,6 +8,9 @@ use App\Models\AttemptQuiz;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AnswerDraggable;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\AssesmentRecapExportHandler;
+
 
 class AssesmentRecapController extends Controller
 {
@@ -89,4 +92,50 @@ class AssesmentRecapController extends Controller
 
         return view('mahasiswa.assesment_rekap', $data);
     }
+
+    public function exportToCsv()
+    {
+        $user = auth()->user();
+        $attempt = $this->getAttemptData($user);
+
+        // Generate the file using AssesmentRecapExportHandler
+        $export = new AssesmentRecapExportHandler($attempt);
+        return Excel::download($export, 'assesment-recap.csv');
+    }
+
+    protected function getAttemptData($user)
+    {
+        // Menggunakan logika yang sama seperti method showAssesmentRecap
+        $attempt = null;
+        $total_skor = 0;
+
+        // Get selected class and quiz
+        $selectedClass = request('class');
+        $selectedQuiz = request('quiz');
+        
+        if ($user->level == 'admin' || $user->level == 'dosen') {
+            // Jika admin atau dosen, ambil semua data AttemptQuiz
+            $attempt = AttemptQuiz::with('user', 'quiz')->get();
+        } else {
+            // Jika bukan admin atau dosen, ambil data AttemptQuiz berdasarkan user_id
+            $attempt = AttemptQuiz::where('user_id', $user->user_id)->with('user', 'quiz')->get();
+        }
+        
+        if ($selectedClass != '') {
+            $attempt = $attempt->filter(function ($attempt) use ($selectedClass) {
+                return $attempt->user->kelas_id == $selectedClass;
+            });
+        }
+        
+        if ($selectedQuiz != '') {
+            $attempt = $attempt->filter(function ($attempt) use ($selectedQuiz) {
+                return $attempt->quiz->quiz_id == $selectedQuiz;
+            });
+        }        
+
+        // Kembali ke data
+        return $attempt;
+    }
+
+
 }

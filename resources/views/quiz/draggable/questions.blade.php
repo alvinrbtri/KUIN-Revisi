@@ -2,6 +2,22 @@
 
 @section('quiz-content')
 
+    <style>
+        .dragged-text {
+            display: inline-block;
+            background: #eee;
+            border: 1px solid #ccc;
+            border-radius: 2px;
+            padding: 2px 5px;
+            margin: 0 2px;
+        }
+        .hidden {
+            display: none;
+        }
+
+    </style>
+
+
     <div class="container-fluid">
         <div class="row mx-2 mt-5">
             <div class="col-md d-flex flex-row justify-content-between h3">
@@ -21,18 +37,19 @@
                     @foreach ($draggable as $item)           
                         <input type="hidden" name="{{ 'user_id-' . $item->draggable_id }}" value="{{ auth()->user()->user_id }}"> 
                         <div class="card mb-5" style="border: 0.7px solid #ddd;">
-                            <div class="card-header text-light d-flex justify-content-between align-items-center" style="border: none; background: #585656">
-                                <h4 style="font-weight: bold">Soal#{{ $loop->iteration }}</h4>
+                            {{-- <div class="card-header text-light d-flex justify-content-between align-items-center" style="border: none; background: #585656">
+                                <!-- <h4 style="font-weight: bold">Soal#{{ $loop->iteration }}</h4> -->
                                 <p class="mb-0">Poin: {{ $item->draggable_poin }}</p>
-                            </div>
-                            <div class="card-body">
-                                {{ $item->draggable_question }}
-        
+                            </div> --}}
+                            <div class="card-body" style="display: flex; align-items: center;">
+                                <p class="question" data-original="{{ $item->draggable_question }}">{{ $item->draggable_question }}</p>
+                                
                                 @if ($item->draggable_image != null)
-                                <div class="mt-3 bg-secondary rounded" style="height: 30vh">
+                                <div class="mt-3 bg-secondary rounded" style="height: 30vh; margin-left: 10px;">
                                     <img src="{{ asset('storage/images/quiz/'.$item->draggable_image) }}" style="width: 100%; height: 100%; object-fit: contain" alt="">
                                 </div>
                                 @endif
+                                <button type="button" class="enable-button btn btn-danger" data-index="{{ $item->draggable_id }}" style="font-size: 12px; margin-left: auto;">Remove</button>
                             </div>
                             <div class="card-footer">
                                 @foreach ($options as $option)
@@ -41,10 +58,8 @@
                                     @endif
                                 @endforeach
                                 <input type="hidden" name="{{ 'draggable_poin-'.$item->draggable_id }}" value="{{ $item->draggable_poin }}">
-                                <input type="text" class="name-input form-control text-center text-dark" name="{{ 'answer-'.$item->draggable_id }}" id="" readonly placeholder="Drop kesini jawaban anda" style="border: none; background: transparent;">
-                                <p class="text-center mt-3 mb-0">
-                                    <button type="button" class="enable-button btn btn-danger" data-index="{{ $item->draggable_id }}" style="font-size: 12px">Remove</button>
-                                </p>
+                                <input type="hidden" class="name-input form-control text-center text-dark" name="{{ 'answer-'.$item->draggable_id }}" id="" readonly placeholder="" style="border: none; background: transparent;">
+                               
                             </div>
                         </div>
                         @endforeach
@@ -131,7 +146,85 @@
                 (detik < 10 ? "0" + detik : detik);
         }
 
-        // Memanggil fungsi fetchCountdownTime saat halaman selesai dimuat
+        $(document).ready(function() {
+
+            $(".drag-item").on("dragstart", function(event) {
+            event.originalEvent.dataTransfer.setData("text", $(this).text());
+        });
+
+        $(".name-input, .question").on("dragover", function(event) {
+            event.preventDefault();
+        });
+
+        $(".name-input, .question").on("drop", function(event) {
+            event.preventDefault();
+            var text = event.originalEvent.dataTransfer.getData("text");
+
+            var relatedInput = $(this).closest('.card').find('.name-input');
+
+            var questionElement = $(this).closest('.card').find('.question');
+
+
+            var removeButton = $(this).closest('.card').find('.enable-button');
+
+
+            relatedInput.val(text);
+
+       
+            relatedInput.addClass('disabled');
+
+            var questionHTML = questionElement.html();
+
+
+            var matches = questionHTML.match(/_+/g);
+
+
+            if (matches) {
+                var updatedQuestion = questionHTML.replace(matches[0], '<span class="dragged-text hidden">' + text + '</span>');
+
+
+                questionElement.html(updatedQuestion);
+
+
+                questionElement.find('.hidden').fadeIn(500).removeClass('hidden');
+
+
+                removeButton.show();
+            }
+        });
+
+        $(".enable-button").on("click", function(event) {
+            event.preventDefault();
+
+
+            var questionElement = $(this).closest('.card').find('.question');
+
+  
+            var originalQuestion = questionElement.data('original');
+
+
+            questionElement.html(originalQuestion);
+
+
+            var relatedInput = $(this).closest('.card-footer').find('.name-input');
+            relatedInput.val('');
+
+      
+            relatedInput.removeClass('disabled');
+
+
+            $(this).hide();
+        });
+
+ 
+        $(".enable-button").hide();
+
+
+        });
+
+
+
+
         $(document).ready(function() {
             fetchCountdownTime();
         });
